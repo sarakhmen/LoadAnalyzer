@@ -3,7 +3,6 @@ package com.sarakhman.loadanalyzer.strategy.validation.impl;
 import com.sarakhman.loadanalyzer.domain.Message;
 import com.sarakhman.loadanalyzer.strategy.validation.FieldValidationStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.time.ZonedDateTime;
@@ -16,12 +15,9 @@ import java.util.function.Function;
 public class DateFieldValidationStrategy implements FieldValidationStrategy {
     private static final String INVALID_DATE_MESSAGE = "Provided date doesn't conform format '%s' format.";
 
-    private final String validDateFormat;
     private final DateTimeFormatter formatter;
 
-    public DateFieldValidationStrategy(@Value("${csv.record.field.date.format}") String validDateFormat,
-                                       @Autowired DateTimeFormatter formatter) {
-        this.validDateFormat = validDateFormat;
+    public DateFieldValidationStrategy(@Autowired DateTimeFormatter formatter) {
         this.formatter = formatter;
     }
 
@@ -29,7 +25,7 @@ public class DateFieldValidationStrategy implements FieldValidationStrategy {
     public Optional<Message> validate(String field, Function<String, Message> invalidFieldMessageGenerator) {
         return isDateValid(field) ? Optional.empty() :
                 Optional.of(invalidFieldMessageGenerator.apply(
-                        String.format(INVALID_DATE_MESSAGE, validDateFormat))
+                        String.format(INVALID_DATE_MESSAGE, formatter.toFormat()))
                 );
     }
 

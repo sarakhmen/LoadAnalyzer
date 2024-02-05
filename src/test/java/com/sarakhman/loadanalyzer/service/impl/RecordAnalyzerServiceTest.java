@@ -5,8 +5,6 @@ import com.sarakhman.loadanalyzer.domain.Metadata;
 import com.sarakhman.loadanalyzer.domain.Record;
 import com.sarakhman.loadanalyzer.provider.impl.BeanNameBasedStrategyProvider;
 import com.sarakhman.loadanalyzer.strategy.analyzer.AnalyzerStrategy;
-import com.sarakhman.loadanalyzer.strategy.validation.FieldValidationStrategy;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,11 +14,9 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;

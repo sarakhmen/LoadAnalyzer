@@ -2,7 +2,6 @@ package com.sarakhman.loadanalyzer.strategy.validation.impl;
 
 import com.sarakhman.loadanalyzer.domain.Message;
 import com.sarakhman.loadanalyzer.strategy.validation.FieldValidationStrategy;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
